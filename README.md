@@ -51,9 +51,7 @@ List the ready features here:
 
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
-
+![Visual Studio Code](./assets/visual-studio.jpg)
 
 ## Setup
 What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
