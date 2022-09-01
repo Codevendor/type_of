@@ -132,6 +132,7 @@ window.foo && type_of(foo);
 
 #### Type Response List
 - Below is response list for using the type_of() method as string response. 
+
 | Example | Response |
 | :------ | :------- |
 | type_of( undefined ) | "undefined" |
@@ -162,6 +163,7 @@ window.foo && type_of(foo);
 
 #### Type Response List Extended
 - Below is an extended response list of type_of(src, true) method returning a type_of_value object.
+
 | Example | Response |
 | :------ | :------- |
 | type_of( Date, true ).name | "Date" |
