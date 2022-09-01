@@ -62,19 +62,24 @@ Proceed to describe how to install / setup one's local environment / get started
 
 
 ## Usage
-I will describe the usage here. I tried to write the code and keep the common practice but fix the bugs while extending it with new features.
+I will describe the general usage here. I built the code to use the common typeof operator practice, but fix the bugs while extending it with new features.
 
-Global method: type_of( src: unknown, extended: false )
-Params:
-- src | type: any
-- The unknown src to check type of.
+| Global Method Name                       |
+| ---------------------------------------- |
+| type_of( src: unknown, extended: false ) |
 
-- extened | type: boolean
-- Returns type_of_value object with extra information like name.
 
-Return:
-- type: string | type_of_value
-- A lower case string of the primitive javascript type or a type_of_value object.
+| Param Name    | Type          | Description                                                     |
+| ------------- | ------------- | --------------------------------------------------------------- |
+| src           | any           | The unknown src to check type of.                               |
+| extended      | boolean       | Returns type_of_value object with extra information like name.  |
+
+
+| Return Types  | Description                                                                     |
+| ------------- | ------------------------------------------------------------------------------- |
+| string        | Returns a string from the type check of the src.                                |
+| type_of_value | When param (extended = true), returns an object with properties name and type.  |
+
 
 Example Javascript Primitive Types:
 - undefined
