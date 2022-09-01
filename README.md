@@ -64,21 +64,21 @@ Proceed to describe how to install / setup one's local environment / get started
 ## Usage
 I will describe the general usage here. I built the code to use the common typeof operator practice, but fix the bugs while extending it with new features.
 
-| Global Method Name                       |
-| ---------------------------------------- |
-| type_of( src: unknown, extended: false ) |
+| Global Method Name                        |
+| :---------------------------------------- |
+| **type_of**( **src:** unknown )  |
+| **type_of**( **src:** unknown, **extended:** boolean = false )  |
+
+| Param Name        | Type          | Description                                                                        |
+| ----------------- | ------------- | ---------------------------------------------------------------------------------- |
+| **src**           | any           | The unknown **src** to check type of.                                                  |
+| **extended**      | boolean       | Returns **type_of_value** object with extra information like name.                 |
 
 
-| Param Name    | Type          | Description                                                     |
-| ------------- | ------------- | --------------------------------------------------------------- |
-| src           | any           | The unknown src to check type of.                               |
-| extended      | boolean       | Returns type_of_value object with extra information like name.  |
-
-
-| Return Types  | Description                                                                     |
-| ------------- | ------------------------------------------------------------------------------- |
-| string        | Returns a string from the type check of the src.                                |
-| type_of_value | When param (extended = true), returns an object with properties name and type.  |
+| Return Type(s)       | Description                                                                                       |
+| ----------------- | ------------------------------------------------------------------------------------------------- |
+| **string**        | Returns a **string** from the type check of the **src**.                                |
+| **type_of_value** | When param (**extended** = true), returns an **object** with properties **name** and **type**.  |
 
 
 Example Javascript Primitive Types:
