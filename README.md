@@ -29,9 +29,9 @@ This also now carrys over into
 
 
 ## Technologies Used
-- Deno - version 1.25.0
-- Typescript - version 4.7.4
-- v8 - version 10.4.132.20
+- **Deno** - version 1.25.0
+- **TypeScript** - version 4.7.4
+- **V8** - version 10.4.132.20
 
 
 ## Features
@@ -62,21 +62,35 @@ Proceed to describe how to install / setup one's local environment / get started
 ## Usage
 I will describe the general usage here. I built the code to use the common typeof operator practice, but fix the bugs while extending it with new features.
 
+### Global Method: type_of
+
 | Global Method Name                        |
 | :---------------------------------------- |
 | **type_of**( **src:** unknown )  |
 | **type_of**( **src:** unknown, **extended:** boolean = false )  |
 
 | Param Name        | Type          | Description                                                                        |
-| ----------------- | ------------- | ---------------------------------------------------------------------------------- |
+| :----------------- | :------------- | :---------------------------------------------------------------------------------- |
 | **src**           | any           | The unknown **src** to check type of.                                                  |
 | **extended**      | boolean       | Returns **type_of_value** object with extra information like name.                 |
 
 
 | Return Type(s)       | Description                                                                                       |
-| ----------------- | ------------------------------------------------------------------------------------------------- |
+| :----------------- | :------------------------------------------------------------------------------------------------- |
 | **string**        | Returns a **string** from the type check of the **src**.                                |
 | **type_of_value** | When param (**extended** = true), returns an **object** with properties **name** and **type**.  |
+
+
+### Custom Type: type_of_value
+
+| TypeScript Type | Description |
+| :--------------- | :-------------------|
+| **type_of_value** | A custom TypeScript type for holding an objects name and type. | 
+
+| Param Name | Type | Description |
+| :--------- | :----------- | :----------------------------------------------------------- |
+| **name**   | string | The **constructor** name for the object or function.               |
+| **type**   | string | The type of the JavaScript value.                             |
 
 
 Example Javascript Primitive Types:
