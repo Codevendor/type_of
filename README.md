@@ -161,7 +161,7 @@ window.foo && type_of(foo);
 | type_of( new RangeError() )      | "error"   |
 
 #### Type Response List Extended
--Below is an extended response list of type_of(src, true) method returning a type_of_value object.
+- Below is an extended response list of type_of(src, true) method returning a type_of_value object.
 | Example | Response |
 | :------ | :------- |
 | type_of( Date, true ).name | "Date" |
