@@ -83,11 +83,11 @@ I will describe the general usage here. I built the code to use the common typeo
 
 ### Custom Type: type_of_value
 
-| TypeScript Type | Description |
-| :--------------- | :-------------------|
-| **type_of_value** | A custom TypeScript type for holding an objects name and type. | 
+| TypeScript Type | Type | Description |
+| :--------------- | :--------- | :-------------------|
+| **type_of_value** | object | A custom TypeScript type for holding an object's name and type. | 
 
-| Param Name | Type | Description |
+| Property Name | Type | Description |
 | :--------- | :----------- | :----------------------------------------------------------- |
 | **name**   | string | The **constructor** name for the object or function.               |
 | **type**   | string | The type of the JavaScript value.                             |
