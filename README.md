@@ -125,34 +125,65 @@ I will describe the general usage here. I built the code to use the common typeo
 Examples will be shown below, but can also be found as assertion tests in the [mod_test.ts](./tests/mod_test.ts) file.
 
 #### Type: unknown
-- While **type_of()** cant check for unknown types that spit out ReferenceErrors, you can always be safe by starting your check like so. 
+- While **type_of()** cant check for unknown types that spit out **ReferenceErrors**, you can always be safe by starting your check like so. 
 ```js
 window.foo && type_of(foo);
 ```
 
-#### Type: undefined
-- The method can determine which items are undefined like so.
-```js
-type_of( undefined ) === "undefined"
-// OR
-type_of( void 0 ) === "undefined"
-// OR
-var foo;
-type_of( foo ) === "undefined"
-// OR
-var foo = undefined;
-type_of( foo ) === "undefined"
-```
+#### Type Response List
+- Below is response list for using the type_of() method as string response. 
+| Example | Response |
+| :------ | :------- |
+| type_of( undefined ) | "undefined" |
+| type_of( void 0 )    | "undefined" |
+| type_of( null )      | "null"      |
+| type_of( true )      | "boolean"   |
+| type_of( 12345 )     | "number"    |
+| type_of( "foo" )     | "string"    |
+| type_of( Symbol() )      | "symbol"   |
+| type_of( BigInt('9007199254740995') )      | "bigint"   |
+| type_of( [] )      | "array"   |
+| type_of( {} )      | "object"   |
+| type_of( JSON )      | "json"   |
+| type_of( Math )      | "math"   |
+| type_of( /a-z/ )      | "regexp"   |
+| type_of( function foo() { } )      | "function"   |
+| type_of( () => { } )      | "function"   |
+| type_of( class foo { } )      | "function"   |
+| type_of( NaN )      | "number"   |
+| type_of( Infinity )      | "number"   |
+| type_of( window )      | "window"   |
+| type_of( globalThis )      | "window"   |
+| type_of( eval )      | "function"   |
+| type_of( Date )      | "function"   |
+| type_of( Error )      | "function"   |
+| type_of( new Error() )      | "error"   |
+| type_of( new RangeError() )      | "error"   |
 
-#### Type: null
-- Can check for null types easily.
-```js
-type_of( null ) === "null"
-// OR
-var foo = null;
-type_of( null ) === "null"
-```
 
+-Below is an extended response list of type_of(src, true) method returning a type_of_value object.
+| Example | Response |
+| :------ | :------- |
+| type_of( Date, true ).name | "Date" |
+| type_of( Date, true ).type | "function" |
+| type_of( eval, true ).name | "eval" |
+| type_of( eval, true ).type | "function" |
+| type_of( function foo(){}, true ).name | "foo" |
+| type_of( function foo(){}, true ).type | "function" |
+| type_of( () => {}, true ).name | "anonymous" |
+| type_of( () => {}, true ).type | "function" |
+| type_of( class foo {}, true ).name | "foo" |
+| type_of( class foo {}, true ).type | "function" |
+| type_of( Error, true ).name | "Error" |
+| type_of( Error, true ).type | "function" |
+| type_of( new Error(), true ).name | "Error" |
+| type_of( new Error(), true ).type | "error" |
+| type_of( RangeError, true ).name | "RangeError" |
+| type_of( RangeError, true ).type | "function" |
+| type_of( new RangeError(), true ).name | "RangeError" |
+| type_of( new RangeError(), true ).type | "error" |
+| type_of( new RangeError(), true ).name | "RangeError" |
+| type_of( new RangeError(), true ).type | "error" |
 
 
 ## Project Status
