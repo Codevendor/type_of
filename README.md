@@ -101,15 +101,58 @@ I will describe the general usage here. I built the code to use the common typeo
 | **type**   | string | The type of the JavaScript value.                             |
 
 
-### Example Javascript Primitive Types:
-- undefined
+### Javascript Primitive Types:
 - null
+- undefined
+- boolean
 - number
 - string
-- boolean
+- symbol
+- bigint
+
+### Javascript Complex Type:
+- object
+
+### Extended types in type_of module
+- array
+- anonymous functions
+- function names
+- class names
+- internal javascript function names
+- error names
 
 ## Examples
-`type_of( undefined ) === "undefined"`
+Examples will be shown below, but can also be found as assertion tests in the [mod_test.ts](./tests/mod_test.ts) file.
+
+#### Type: unknown
+- While **type_of()** cant check for unknown types that spit out ReferenceErrors, you can always be safe by starting your check like so. 
+```js
+window.foo && type_of(foo);
+```
+
+#### Type: undefined
+- The method can determine which items are undefined like so.
+```js
+type_of( undefined ) === "undefined"
+// OR
+type_of( void 0 ) === "undefined"
+// OR
+var foo;
+type_of( foo ) === "undefined"
+// OR
+var foo = undefined;
+type_of( foo ) === "undefined"
+```
+
+#### Type: null
+- Can check for null types easily.
+```js
+type_of( null ) === "null"
+// OR
+var foo = null;
+type_of( null ) === "null"
+```
+
 
 
 ## Project Status
