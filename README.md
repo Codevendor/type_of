@@ -1,41 +1,29 @@
 # type_of
 > A global method written in typescript to fix the javascript typeof operator. This code is written as a module for the deno runtime.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
+> Live demo [_here_](https://codevendor.com). 
 
 ## Table of Contents
-* [General Info](#general-information)
-* [Technologies Used](#technologies-used)
+* [General Info](#general-info)
 * [Features](#features)
+* [Tech](#tech)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Usage](#usage)
+* [Examples](#examples)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
 * [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
-<!-- * [License](#license) -->
+* [License](#license)
 
 
-## General Information
+## General Info
 While programming many years with JavaScript, I've ran into many bugs using the typeof operator to check data types. 
 The bugs have carried over to using TypeScript as well. I decided to research all the bugs and build an alternative typeof as a global method named type_of(). This module is created to work on the deno runtime.
 
-This also now carrys over into 
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
-
-
-## Technologies Used
-- **Deno** - version 1.25.0
-- **TypeScript** - version 4.7.4
-- **V8** - version 10.4.132.20
-
 
 ## Features
-List the ready features here:
+Below are the current features of the type_of module.
 - Proper undefined check
 - Proper null check
 - Can type check all common JavaScript primitive types.
@@ -48,15 +36,35 @@ List the ready features here:
 - Has special boolean called extended for returning an object from typeof with name and type.
 - JavaScript Errors can return proper type and name.
 
+## Tech
+- **Deno** - version 1.25.0
+- **TypeScript** - version 4.7.4
+- **V8** - version 10.4.132.20
+- **Visual Studio Code** - 1.70+
 
 
 ## Screenshots
 ![Visual Studio Code](./assets/visual-studio.jpg)
 
-## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
 
-Proceed to describe how to install / setup one's local environment / get started with the project.
+## Setup
+Things you will need to get this module running. You will need to install Deno runtime for Javascript / TypeScript.
+
+- [Deno Installation](https://deno.land/manual@v1.25.0/getting_started/installation)
+- [Visual Studio Code Installation](https://code.visualstudio.com/Docs/setup/setup-overview)
+- [Deno Plugin Install for VSC](https://deno.land/manual@v1.25.0/vscode_deno)
+
+
+### Installing code from github
+```bash
+    # git clone git@github.com:Codevendor/type_of.git
+```
+
+
+### Installing code from deno.land
+```bash
+    # Coming soon
+```
 
 
 ## Usage
@@ -93,13 +101,14 @@ I will describe the general usage here. I built the code to use the common typeo
 | **type**   | string | The type of the JavaScript value.                             |
 
 
-Example Javascript Primitive Types:
+### Example Javascript Primitive Types:
 - undefined
 - null
 - number
 - string
 - boolean
 
+## Examples
 `type_of( undefined ) === "undefined"`
 
 
@@ -108,15 +117,11 @@ Project is: _in progress_
 
 
 ## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
+- More testing needs to be done.
 
 To do:
-- Feature to be added 1
-- Feature to be added 2
+- Create deno.land module.
+- Update tutorial and code usage examples.
 
 
 ## Acknowledgements
@@ -127,8 +132,5 @@ To do:
 Created by [@Codevendor](https://codevendor.com/) - feel free to contact me!
 
 
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
+## License
+This project is open source and available under the [... MIT License](https://github.com/Codevendor/type_of/blob/main/LICENSE).
