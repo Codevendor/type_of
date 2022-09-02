@@ -1,77 +1,56 @@
 'use strict';
 
-import { type_of_value } from './type_of_value.ts';
-
-declare global {
-    const type_of: any;
-    interface Window {
-        type_of: any;
-    }
-}
-
 /**
- * A global method written in typescript to fix the javascript typeof operator.
- * @param {unknown} src - The unknown src to check type of.
- * @param {boolean} extended - Returns type_of_value object with extra information like name.
- * @returns {string|type_of_value} - A lower case string of the primitive javascript type or a type_of_value object.
+ * The typeOf method can determine a correct type and name and return it as string.
+ * @param {unknown} src - The source to test for type.
+ * @param {boolean} [extended=false] - Extends the return type string to include name. i.e 'function foo'. Defaults to false.
+ * @returns {string} - A string representing the correct type of the src.
  */
-window.type_of = ((global) => {
+export function type_of(src: unknown, extended: boolean = false): string {
 
-    return ((src: unknown, extended: false): string | type_of_value => {
+    switch (src) {
 
-        let ret: type_of_value = { "name": "", "type": ""};
+        /** Type undefined */
+        case undefined: return 'undefined';
 
-        switch (src) {
+        /** Type null */
+        case null: return 'null';
 
-            /** Type undefined */
-            case undefined: ret.type = 'undefined'; break;
+        /** Type window */
+        case window: return 'window';
 
-            /** Type null */
-            case null: ret.type = 'null'; break;
+        default:
 
-            /** Type global */
-            case global: ret.type = 'global'; break; 
+            const match_string: string = ({}).toString.call(src);
+            const matches: RegExpMatchArray | null = match_string.match(/\s([a-z|A-Z]+)/);
 
-            /** Type window */
-            case window: ret.type = 'window'; break; 
+            /** Type not found */
+            if (matches === null || matches.length != 2) {
 
-            default:
+                return 'unknown';
 
-                const match_string: string = ({}).toString.call(src);
-                const matches: RegExpMatchArray | null = match_string.match(/\s([a-z|A-Z]+)/);
+            }
 
-                /** Type not found */
-                if (matches === null || matches.length != 2) {
+            // Set type
+            let ctype = matches[1].toLowerCase();
 
-                    ret.type = 'unspecified'; break; 
+            // Jump out of switch
+            if (!extended) return ctype;
 
-                }
+            // Check if function
+            if (ctype === 'function') {
 
-                // Set type
-                ret.type = matches[1].toLowerCase();
+                return ((<Function>src).name! === '') ? 'function anonymous' : 'function ' + (<Function>src).name;
 
-                // Jump out of switch
-                if(!extended) break; 
+            }
 
-                // Check if function
-                if(ret.type === 'function') {
+            // Check for object or error
+            if (ctype === 'object' || ctype === 'error') {
 
-                    ret.name = ((<Function>src).name! === '') ? 'anonymous' : (<Function>src).name;
-                    break;
-                }
+                return ctype + ' ' + (<object>src).constructor!.name!;
+            }
 
-                // Check for object or error
-                if(ret.type === 'object' || ret.type === 'error') {
+            return ctype;
+    }
 
-                    ret.name = (<object>src).constructor!.name!;
-                    break;
-                }
-
-                break;
-        }
-
-        return (extended)? ret : ret.type;
-
-    });
-
-})(this);
+};

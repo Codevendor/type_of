@@ -1,5 +1,5 @@
 # type_of
-> A global method written in typescript to fix the javascript typeof operator. This code is written as a module for the deno runtime.
+> An importable TypeScript method to fix the JavaScript **typeof** operator. This code is written as a module for the **deno** runtime.
 
 ## Table of Contents
 * [General Info](#general-info)
@@ -9,31 +9,29 @@
 * [Setup](#setup)
 * [Usage](#usage)
 * [Examples](#examples)
-* [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
+* [Versions](#versions)
 * [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
 * [License](#license)
 
 
 ## General Info
-While programming many years with JavaScript, I've ran into many bugs using the typeof operator to check data types. 
-The bugs have carried over to using TypeScript as well. I decided to research all the bugs and build an alternative typeof as a global method named type_of(). This module is created to work on the deno runtime.
+While programming many years with _JavaScript_, I've ran into many bugs using the **typeof** operator to check data types. 
+The bugs have carried over to using _TypeScript_ as well. I decided to research all the bugs and build an alternative typeof as a method named **type_of ()**. This module is created to work on the deno runtime.
 
 
 ## Features
-Below are the current features of the type_of module.
-- Proper undefined check
-- Proper null check
-- Can type check all common JavaScript primitive types.
-- Can type check all methods including anonymous arrow functions.
-- Can type check objects
-- Can type check arrays
-- Using extended option can return class names.
-- Can type check new JavaScript types like bigint and symbol.
-- Can type check internal JavaScript functions like eval, JSON, NaN, etc.
-- Has special boolean called extended for returning an object from typeof with name and type.
-- JavaScript Errors can return proper type and name.
+Below are the current features of the **type_of ()** module.
+- Proper **undefined** check
+- Proper **null** check
+- Can type check all common **JavaScript primitive types**.
+- Can type check **complex types** like **object** and seperate it into **exact types**.
+- Can type check all methods including **anonymous** arrow functions.
+- Can type check **arrays**.
+- Using **extended** option can return **class names**.
+- Can type check new JavaScript types like **bigint** and **symbol**.
+- Can type check internal JavaScript functions like **eval**, **JSON**, **NaN**, etc.
+- JavaScript **Errors** can return **proper type** and **name**.
 
 ## Tech
 - **Deno** - version 1.25.0
@@ -47,7 +45,7 @@ Below are the current features of the type_of module.
 
 
 ## Setup
-Things you will need to get this module running. You will need to install Deno runtime for Javascript / TypeScript.
+Things you will need to get this module running. You will need to install **Deno** runtime for _Javascript / TypeScript_.
 
 - [Deno Installation](https://deno.land/manual@v1.25.0/getting_started/installation)
 - [Visual Studio Code Installation](https://code.visualstudio.com/Docs/setup/setup-overview)
@@ -59,153 +57,135 @@ Things you will need to get this module running. You will need to install Deno r
     # git clone git@github.com:Codevendor/type_of.git
 ```
 
-
-### Installing code from deno.land
-```bash
-    # Coming soon
+### Installing code from deno.land with import statement.
+```js
+    // Snake case version - type_of();
+   import { type_of } from "https://deno.land/x/type_of@v2.0.0/mod.ts";
+   
+   // Or
+   
+   // Camel case alias - typeOf()
+   import { typeOf } from "https://deno.land/x/type_of@v2.0.0/mod.ts";
 ```
 
 
 ## Usage
-I will describe the general usage here. I built the code to use the common typeof operator practice, but fix the bugs while extending it with new features.
+The method **type_of ()** was built to mimic the JavaScript **typeof** operator. The purpose is to keep the familiarity of the functionality while correcting the known bugs with the operator code. I have also extended the method with a second optional boolean parameter for returning names of functions, classes, errors, etc.
 
-### Global Method: type_of
+### Method - **type_of** ( **src**: _unknown_, **extended**: _boolean = false_ )
+Listed below are the method **signature(s)**.
 
-| Global Method Name                        |
+| Method Signature                        |
 | :---------------------------------------- |
-| **type_of**( **src:** unknown )  |
-| **type_of**( **src:** unknown, **extended:** boolean = false )  |
+| **type_of** ( **src:** _unknown_ )  |
+| **type_of** ( **src:** _unknown_, **extended:** _boolean = false_ )  |
+| _alias_ **typeOf** ( **src:** _unknown_ ) |
+| _alias_ **typeOf** ( **src:** _unknown_, **extended:** _boolean = false_ ) |
+
+Listed below are the **parameter(s)** for the method.
 
 | Param Name        | Type          | Description                                                                        |
-| :----------------- | :------------- | :---------------------------------------------------------------------------------- |
-| **src**           | any           | The unknown **src** to check type of.                                                  |
-| **extended**      | boolean       | Returns **type_of_value** object with extra information like name.                 |
+| :----------------- | :------------- | :------------------------------------------------------------------------------ |
+| **src**           | _unknown_         | The source to test for type.                                             |
+| **extended**      | _boolean_       | Extends the return type string to include name. i.e _'function foo'_. Defaults to _false_.                 |
 
+Below is the **return type** for the method.
 
-| Return Type(s)       | Description                                                                                       |
+| Return Type      | Description                                                                                       |
 | :----------------- | :------------------------------------------------------------------------------------------------- |
-| **string**        | Returns a **string** from the type check of the **src**.                                |
-| **type_of_value** | When param (**extended** = true), returns an **object** with properties **name** and **type**.  |
-
-
-### Custom Type: type_of_value
-
-| TypeScript Type | Type | Description |
-| :--------------- | :--------- | :-------------------|
-| **type_of_value** | object | A custom TypeScript type for holding an object's name and type. | 
-
-| Property Name | Type | Description |
-| :--------- | :----------- | :----------------------------------------------------------- |
-| **name**   | string | The **constructor** name for the object or function.               |
-| **type**   | string | The type of the JavaScript value.                             |
+| **string**        | A _string_ representing the correct type of the src. If ( _extended = true_ ) then string will return with name. i.e _'function foo'_                              |
 
 
 ### Javascript Primitive Types:
-- null
-- undefined
-- boolean
-- number
-- string
-- symbol
-- bigint
+- **null**
+- **undefined**
+- **boolean**
+- **number**
+- **string**
+- **symbol** --- (Available from **ES2015**)
+- **bigint** --- (Available from **ES2020**)
+- **array** --- (Added with **type_of()** module)
 
 ### Javascript Complex Type:
-- object
+- **object**
 
-### Extended types in type_of module
-- array
-- anonymous functions
-- function names
-- class names
-- internal javascript function names
-- error names
+### Extended types in type_of() module with ( _extended = true_ )
+- **anonymous functions** --- ('function anonymous')
+- **function names** --- ('function foo')
+- **class names** --- ('function classname')
+- **internal javascript function names** --- ('function eval')
+- **error names** --- ('error RangeError', 'function RangeError')
 
 ## Examples
 Examples will be shown below, but can also be found as assertion tests in the [mod_test.ts](./tests/mod_test.ts) file.
 
 #### Type: unknown
-- While **type_of()** cant check for unknown types that spit out **ReferenceErrors**, you can always be safe by starting your check like so. 
+While **type_of()** cant check for _unknown types_ that spit out **ReferenceErrors**, you can always be safe by starting your check like so. 
 ```js
 window.foo && type_of(foo);
 ```
 
 #### Type Response List
-- Below is response list for using the **type_of()** method as string response. 
+Below is a string response list for using the **type_of()** method. 
 
 | Example | Response |
 | :------ | :------- |
-| **type_of**( undefined ) | "undefined" |
-| **type_of**( void 0 )    | "undefined" |
-| **type_of**( null )      | "null"      |
-| **type_of**( true )      | "boolean"   |
-| **type_of**( 12345 )     | "number"    |
-| **type_of**( "foo" )     | "string"    |
-| **type_of**( Symbol() )      | "symbol"   |
-| **type_of**( BigInt('9007199254740995') )      | "bigint"   |
-| **type_of**( [] )      | "array"   |
-| **type_of**( {} )      | "object"   |
-| **type_of**( JSON )      | "json"   |
-| **type_of**( Math )      | "math"   |
-| **type_of**( /a-z/ )      | "regexp"   |
-| **type_of**( function foo() { } )      | "function"   |
-| **type_of**( () => { } )      | "function"   |
-| **type_of**( class foo { } )      | "function"   |
-| **type_of**( NaN )      | "number"   |
-| **type_of**( Infinity )      | "number"   |
-| **type_of**( window )      | "window"   |
-| **type_of**( globalThis )      | "window"   |
-| **type_of**( eval )      | "function"   |
-| **type_of**( Date )      | "function"   |
-| **type_of**( Error )      | "function"   |
-| **type_of**( new Error() )      | "error"   |
-| **type_of**( new RangeError() )      | "error"   |
+| **type_of** ( _unknown_ ) | "unknown" |
+| **type_of** ( _undefined_ ) | "undefined" |
+| **type_of** ( _void 0_ )    | "undefined" |
+| **type_of** ( _null_ )      | "null"      |
+| **type_of** ( _true_ )      | "boolean"   |
+| **type_of** ( _12345_ )     | "number"    |
+| **type_of** ( _"foo"_ )     | "string"    |
+| **type_of** ( _Symbol()_ )      | "symbol"   |
+| **type_of** ( _BigInt('9007199254740995')_ )      | "bigint"   |
+| **type_of** ( _[]_ )      | "array"   |
+| **type_of** ( _{}_ )      | "object"   |
+| **type_of** ( _JSON_ )      | "json"   |
+| **type_of** ( _Math_ )      | "math"   |
+| **type_of** ( _/a-z/_ )      | "regexp"   |
+| **type_of** ( _function foo() { }_ )      | "function"   |
+| **type_of** ( _() => { }_ )      | "function"   |
+| **type_of** ( _class foo { }_ )      | "function"   |
+| **type_of** ( _NaN_ )      | "number"   |
+| **type_of** ( _Infinity_ )      | "number"   |
+| **type_of** ( _window_ )      | "window"   |
+| **type_of**( _globalThis_ )      | "window"   |
+| **type_of** ( _eval_ )      | "function"   |
+| **type_of** ( _Date_ )      | "function"   |
+| **type_of** ( _Error_ )      | "function"   |
+| **type_of** ( _new Error()_ )      | "error"   |
+| **type_of** ( _new RangeError()_ )      | "error"   |
 
-#### Type Response List Extended
-- Below is an extended response list of **type_of(src, true)** method returning a **type_of_value** object.
+#### Type Response List with ( _extended = true_ )
+Below is an extended response list for **type_of** (src, true) 
 
 | Example | Response |
 | :------ | :------- |
-| **type_of**( Date, true ).name | "Date" |
-| **type_of**( Date, true ).type | "function" |
-| **type_of**( eval, true ).name | "eval" |
-| **type_of**( eval, true ).type | "function" |
-| **type_of**( function foo(){}, true ).name | "foo" |
-| **type_of**( function foo(){}, true ).type | "function" |
-| **type_of**( () => {}, true ).name | "anonymous" |
-| **type_of**( () => {}, true ).type | "function" |
-| **type_of**( class foo {}, true ).name | "foo" |
-| **type_of**( class foo {}, true ).type | "function" |
-| **type_of**( Error, true ).name | "Error" |
-| **type_of**( Error, true ).type | "function" |
-| **type_of**( new Error(), true ).name | "Error" |
-| **type_of**( new Error(), true ).type | "error" |
-| **type_of**( RangeError, true ).name | "RangeError" |
-| **type_of**( RangeError, true ).type | "function" |
-| **type_of**( new RangeError(), true ).name | "RangeError" |
-| **type_of**( new RangeError(), true ).type | "error" |
-| **type_of**( new RangeError(), true ).name | "RangeError" |
-| **type_of**( new RangeError(), true ).type | "error" |
+| **type_of** ( _"foo", true_ ) | "string" |
+| **type_of** ( _Date, true_ ) | "function Date" |
+| **type_of** ( _eval, true_ ) | "function eval" |
+| **type_of** ( _function foo(){}, true_ ) | "function foo" |
+| **type_of** ( _() => {}, true_ ) | "function anonymous" |
+| **type_of** ( _class foo {}, true_ ) | "function foo" |
+| **type_of** ( _new class foo {}, true_ ) | "object foo" |
+| **type_of** ( _Error, true_ ) | "function Error" |
+| **type_of** ( _new Error(), true_ ) | "error Error" |
+| **type_of** ( _RangeError, true_ ) | "function RangeError" |
+| **type_of** ( _new RangeError(), true_ ) | "error RangeError" |
 
 
-## Project Status
-Project is: _in progress_ 
-
-
-## Room for Improvement
-- More testing needs to be done.
-
-To do:
-- Create deno.land module.
-- Update tutorial and code usage examples.
-
+## Versions
+- **v2.0.0** --- Importable Method **type_of ()** or _alias_ **typeOf ()** with only one return type of (**string**) 
+- **v1.0.0** --- Global method **type_of ()** with extended return type of (**string | type_of_value**)
 
 ## Acknowledgements
 - This project was based on [this tutorial](https://javascriptweblog.wordpress.com/2011/08/08/fixing-the-javascript-typeof-operator/).
 - Thanks to [Angus croll](https://github.com/angus-c)
 
 ## Contact
-Created by [@Codevendor](https://codevendor.com/) - feel free to contact me!
+Created by _Adam Smith_ [@Codevendor](https://codevendor.com/) - feel free to contact me!
 
 
 ## License
-This project is open source and available under the [... MIT License](https://github.com/Codevendor/type_of/blob/main/LICENSE).
+This project is open source and available under the [... MIT License](./LICENSE).

@@ -1,6 +1,6 @@
 /** The type_of module tests. */
 import { assertEquals } from "./test_deps.ts";
-import {} from "../mod.ts";
+import { type_of } from "../mod.ts";
 
 /** Set some terminal color. */
 const BG_BLUE = "\x1b[44m";
@@ -214,100 +214,78 @@ Deno.test(`\n${TITLE} JavaScript Type: new RangeError() ${RESET}`, () => {
 
 Deno.test(`\n${TITLE} JavaScript Type: string with extended ${RESET}`, () => {
 
-  console.log(`type_of( 'test', true ).name === "${type_of('test', true).name}"`);
-  console.log(`type_of( 'test', true ).type === "${type_of('test', true).type}"`);
-  assertEquals(type_of('test', true).name, "");
-  assertEquals(type_of('test', true).type, "string");
+  console.log(`type_of( 'foo', true ) === "${type_of('foo', true)}"`);
+  assertEquals(type_of('foo', true), "string");
 
 });
 
 Deno.test(`\n${TITLE} JavaScript Type: Date with extended ${RESET}`, () => {
 
-  console.log(`type_of( Date, true ).name === "${type_of(Date, true).name}"`);
-  console.log(`type_of( Date, true ).type === "${type_of(Date, true).type}"`);
-  assertEquals(type_of(Date, true).name, "Date");
-  assertEquals(type_of(Date, true).type, "function");
+  console.log(`type_of( Date, true ) === "${type_of(Date, true)}"`);
+  assertEquals(type_of(Date, true), "function Date");
 
 });
 
 Deno.test(`\n${TITLE} JavaScript Type: eval with extened ${RESET}`, () => {
 
-  console.log(`type_of( eval, true ).name === "${type_of(eval, true).name}"`);
-  console.log(`type_of( eval, true ).type === "${type_of(eval, true).type}"`);
-  assertEquals(type_of(eval, true).name, "eval");
-  assertEquals(type_of(eval, true).type, "function");
+  console.log(`type_of( eval, true ) === "${type_of(eval, true)}"`);
+  assertEquals(type_of(eval, true), "function eval");
 
 });
 
 Deno.test(`\n${TITLE} JavaScript Type: function with extended ${RESET}`, () => {
 
-  console.log(`type_of( function foo(){}, true ).name === "${type_of(function foo() { }, true).name}"`);
-  console.log(`type_of( function foo(){}, true ).type === "${type_of(function foo() { }, true).type}"`);
-  assertEquals(type_of(function foo() { }, true).name, "foo");
-  assertEquals(type_of(function foo() { }, true).type, "function");
+  console.log(`type_of( function foo(){}, true ) === "${type_of(function foo() { }, true)}"`);
+  assertEquals(type_of(function foo() { }, true), "function foo");
 
 });
 
 Deno.test(`\n${TITLE} JavaScript Type: anonymous function with extended ${RESET}`, () => {
 
-  console.log(`type_of( ()=>{}, true ).name === "${type_of(() => { }, true).name}"`);
-  console.log(`type_of( ()=>{}, true ).type === "${type_of(() => { }, true).type}"`);
-  assertEquals(type_of(() => { }, true).name, "anonymous");
-  assertEquals(type_of(() => { }, true).type, "function");
+  console.log(`type_of( ()=>{}, true ) === "${type_of(() => { }, true)}"`);
+  assertEquals(type_of(() => { }, true), "function anonymous");
 
 });
 
 Deno.test(`\n${TITLE} JavaScript Type: class with extended ${RESET}`, () => {
 
-  console.log(`type_of( class foo {}, true ).name === "${type_of(class foo { }, true).name}"`);
-  console.log(`type_of( class foo {}, true ).type === "${type_of(class foo { }, true).type}"`);
-  assertEquals(type_of(class foo { }, true).name, "foo");
-  assertEquals(type_of(class foo { }, true).type, "function");
+  console.log(`type_of( class foo {}, true ) === "${type_of(class foo { }, true)}"`);
+  assertEquals(type_of(class foo { }, true), "function foo");
 
 });
 
 Deno.test(`\n${TITLE} JavaScript Type: new class with extended ${RESET}`, () => {
 
-  console.log(`type_of( new class foo {}, true ).name === "${type_of(new class foo { }, true).name}"`);
-  console.log(`type_of( new class foo {}, true ).type === "${type_of(new class foo { }, true).type}"`);
-  assertEquals(type_of(new class foo { }, true).name, "foo");
-  assertEquals(type_of(new class foo { }, true).type, "object");
+  console.log(`type_of( new class foo {}, true ) === "${type_of(new class foo { }, true)}"`);
+  assertEquals(type_of(new class foo { }, true), "object foo");
 
 });
 
 Deno.test(`\n${TITLE} JavaScript Type: Error with extended ${RESET}`, () => {
 
-  console.log(`type_of( Error, true ).name === "${type_of(Error, true).name}"`);
-  console.log(`type_of( Error, true ).type === "${type_of(Error, true).type}"`);
-  assertEquals(type_of(Error, true).name, "Error");
-  assertEquals(type_of(Error, true).type, "function");
+  console.log(`type_of( Error, true ) === "${type_of(Error, true)}"`);
+  assertEquals(type_of(Error, true), "function Error");
 
 });
 
 Deno.test(`\n${TITLE} JavaScript Type: new Error() with extended ${RESET}`, () => {
 
-  console.log(`type_of( new Error(), true ).name === "${type_of(new Error(), true).name}"`);
-  console.log(`type_of( new Error(), true ).type === "${type_of(new Error(), true).type}"`);
-  assertEquals(type_of(new Error(), true).name, "Error");
-  assertEquals(type_of(new Error(), true).type, "error");
+  console.log(`type_of( new Error(), true ) === "${type_of(new Error(), true)}"`);
+  assertEquals(type_of(new Error(), true), "error Error");
 
 });
 
 Deno.test(`\n${TITLE} JavaScript Type: RangeError with extended ${RESET}`, () => {
 
-  console.log(`type_of( RangeError, true ).name === "${type_of(RangeError, true).name}"`);
-  console.log(`type_of( RangeError, true ).type === "${type_of(RangeError, true).type}"`);
-  assertEquals(type_of(RangeError, true).name, "RangeError");
-  assertEquals(type_of(RangeError, true).type, "function");
+  console.log(`type_of( RangeError, true ) === "${type_of(RangeError, true)}"`);
+  assertEquals(type_of(RangeError, true), "function RangeError");
 
 });
 
 Deno.test(`\n${TITLE} JavaScript Type: new RangeError() with extended ${RESET}`, () => {
 
-  console.log(`type_of( new RangeError(), true ).name === "${type_of(new RangeError(), true).name}"`);
-  console.log(`type_of( new RangeError(), true ).type === "${type_of(new RangeError(), true).type}"`);
-  assertEquals(type_of(new RangeError(), true).name, "RangeError");
-  assertEquals(type_of(new RangeError(), true).type, "error");
+  console.log(`type_of( new RangeError(), true ) === "${type_of(new RangeError(), true)}"`);
+  assertEquals(type_of(new RangeError(), true), "error RangeError");
 
 });
 
