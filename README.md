@@ -183,7 +183,6 @@ Below is an extended response list for **type_of** (src, true)
 | **type_of** ( _-12345, true_ ) | "number integer" |
 | **type_of** ( _12345.67, true_ ) | "number float" |
 | **type_of** ( _-12345.67, true_ ) | "number float" |
-| **type_of** ( _12345.67, true_ ) | "number float" |
 | **type_of** ( _NaN, true_ ) | "number nan" |
 | **type_of** ( _Infinity, true_ ) | "number infinity" |
 | **type_of** ( _BigInt('9007199254740995'), true_ ) | "number bigint" |
