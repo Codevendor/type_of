@@ -1,5 +1,5 @@
 # type_of
-> An importable TypeScript method to fix the JavaScript **typeof** operator. This code is written as a module for the **deno** runtime.
+> An importable TypeScript method to fix the JavaScript **typeof** operator. This code is written as a module for the **deno** runtime. If you would like to visit the deno.land module page for *type_of()** [type_of deno module](https://deno.land/x/type_of).
 
 ## Table of Contents
 * [General Info](#general-info)
@@ -59,7 +59,7 @@ Things you will need to get this module running. You will need to install **Deno
     # git clone git@github.com:Codevendor/type_of.git
 ```
 
-### Installing code from deno.land with import statement.
+### Installing code from deno.land with import statement. [type_of deno module](https://deno.land/x/type_of)
 ```js
     // Snake case version - type_of();
    import { type_of } from "https://deno.land/x/type_of@v2.1.0/mod.ts";
