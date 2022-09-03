@@ -1,5 +1,5 @@
 # type_of
-> An importable TypeScript method to fix the JavaScript **typeof** operator. This code is written as a module for the **deno** runtime. If you would like to visit the deno.land module page for **type_of()** [type_of deno module](https://deno.land/x/type_of).
+> An importable TypeScript / JavaScript method to fix the JavaScript **typeof** operator. This code is written as a module for the **deno** runtime. If you are using JavaScript of node.js there is an included [type_of.mjs](./src/type_of.mjs) file. If you would like to visit the deno.land module page for **type_of()** [type_of deno module](https://deno.land/x/type_of).
 
 ## Table of Contents
 * [General Info](#general-info)
