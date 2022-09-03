@@ -6,7 +6,7 @@
  * @param {boolean} [extended=false] - Extends the return type string to include name. i.e 'function foo'. Defaults to false.
  * @returns {string} - A string representing the correct type of the src.
  */
-export function type_of(src: unknown, extended: boolean = false): string {
+export function type_of(src, extended = false) {
 
     switch (src) {
 
@@ -21,8 +21,8 @@ export function type_of(src: unknown, extended: boolean = false): string {
 
         default:
 
-            const match_string: string = ({}).toString.call(src);
-            const matches: RegExpMatchArray | null = match_string.match(/\s([a-z|A-Z]+)/);
+            const match_string = ({}).toString.call(src);
+            const matches = match_string.match(/\s([a-z|A-Z]+)/);
 
             /** Type not found */
             if (matches === null || matches.length != 2) {
@@ -50,10 +50,10 @@ export function type_of(src: unknown, extended: boolean = false): string {
                     if(Number.isSafeInteger(src)) return 'number integer';
 
                     /** Parse float */
-                    if(!!(src as number % 1)) return 'number float';
+                    if(!!(src % 1)) return 'number float';
 
                     /** Check nan */
-                    if(isNaN(src as number)) { return 'number nan'; } 
+                    if(isNaN(src)) { return 'number nan'; } 
                     else if (src === Infinity){ return 'number infinity'; }
                     
                     return ctype;
@@ -64,12 +64,12 @@ export function type_of(src: unknown, extended: boolean = false): string {
 
                 case 'function': 
 
-                    return ((<Function>src).name! === '') ? 'function anonymous' : 'function ' + (<Function>src).name;
+                    return (src.name === '') ? 'function anonymous' : 'function ' + src.name;
 
                 case 'error':
                 case 'object':
 
-                    return ctype + ' ' + (<object>src).constructor!.name!;
+                    return ctype + ' ' + src.constructor.name;
 
                 default : 
                 

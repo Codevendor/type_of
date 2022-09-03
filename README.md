@@ -60,7 +60,7 @@ Things you will need to get this module running. You will need to install **Deno
 ```
 
 ### Installing code from deno.land with import statement. [type_of deno module](https://deno.land/x/type_of)
-The deno url can be changed to whatever version you would like to use https://deno.land/x/type_of@v*.*.*/mod.ts. Just change *.*.* to the version number. i.e: **2.1.0**
+The deno url can be changed to whatever version you would like to use https://deno.land/x/type_of@v*.*.*/mod.ts. Just change (*) to the version number. i.e: **2.1.0**
 ```js
     // Snake case version - type_of();
    import { type_of } from "https://deno.land/x/type_of@v2.1.0/mod.ts";
