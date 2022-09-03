@@ -219,6 +219,14 @@ Deno.test(`\n${TITLE} JavaScript Type: string with extended ${RESET}`, () => {
 
 });
 
+
+Deno.test(`\n${TITLE} JavaScript Type: object with extended ${RESET}`, () => {
+
+  console.log(`type_of( {}, true ) === "${type_of({}, true)}"`);
+  assertEquals(type_of({}, true), "object Object");
+
+});
+
 Deno.test(`\n${TITLE} JavaScript Type: Date with extended ${RESET}`, () => {
 
   console.log(`type_of( Date, true ) === "${type_of(Date, true)}"`);
@@ -289,3 +297,76 @@ Deno.test(`\n${TITLE} JavaScript Type: new RangeError() with extended ${RESET}`,
 
 });
 
+/** Check extended with number. -------------------------------------------------------------- */
+
+Deno.test(`\n${TITLE} JavaScript Type: 0 number number with extended ${RESET}`, () => {
+
+  console.log(`type_of( 0, true ) === "${type_of(0, true)}"`);
+  assertEquals(type_of(0, true), "number integer");
+
+});
+
+Deno.test(`\n${TITLE} JavaScript Type: number with extended ${RESET}`, () => {
+
+  console.log(`type_of( 12345, true ) === "${type_of(12345, true)}"`);
+  assertEquals(type_of(12345, true), "number integer");
+
+});
+
+Deno.test(`\n${TITLE} JavaScript Type: negative number with extended ${RESET}`, () => {
+
+  console.log(`type_of( -12345, true ) === "${type_of(-12345, true)}"`);
+  assertEquals(type_of(-12345, true), "number integer");
+
+});
+
+Deno.test(`\n${TITLE} JavaScript Type: float number with extended ${RESET}`, () => {
+
+  console.log(`type_of( 12345.67, true ) === "${type_of(12345.67, true)}"`);
+  assertEquals(type_of(12345.67, true), "number float");
+
+});
+
+Deno.test(`\n${TITLE} JavaScript Type: negative float number with extended ${RESET}`, () => {
+
+  console.log(`type_of( -12345.67, true ) === "${type_of(-12345.67, true)}"`);
+  assertEquals(type_of(-12345.67, true), "number float");
+
+});
+
+Deno.test(`\n${TITLE} JavaScript Type: NaN number with extended ${RESET}`, () => {
+
+  console.log(`type_of( NaN, true ) === "${type_of(NaN, true)}"`);
+  assertEquals(type_of(NaN, true), "number nan");
+
+});
+
+Deno.test(`\n${TITLE} JavaScript Type: Infinity number with extended ${RESET}`, () => {
+
+  console.log(`type_of( Infinity, true ) === "${type_of(Infinity, true)}"`);
+  assertEquals(type_of(Infinity, true), "number infinity");
+
+});
+
+Deno.test(`\n${TITLE} JavaScript Type: BigInt with extended ${RESET}`, () => {
+
+  console.log(`type_of( BigInt('9007199254740995'), true ) === "${type_of(BigInt('9007199254740995'), true)}"`);
+  assertEquals(type_of(BigInt('9007199254740995'), true), "number bigint");
+
+});
+
+Deno.test(`\n${TITLE} JavaScript Type: 1.0 with extended ${RESET}`, () => {
+
+  console.log(`type_of( 1.0, true ) === "${type_of(1.0, true)}"`);
+  assertEquals(type_of(1.0, true), "number integer");
+
+});
+
+/** check for string object ----------------------------------------------- */
+
+Deno.test(`\n${TITLE} JavaScript Type: string object with extended ${RESET}`, () => {
+
+  console.log(`type_of( new String("foo"), true ) === "${type_of( new String("foo"), true)}"`);
+  assertEquals(type_of( new String("foo"), true), "string Object");
+
+});

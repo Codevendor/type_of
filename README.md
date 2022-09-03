@@ -32,6 +32,8 @@ Below are the current features of the **type_of ()** module.
 - Can type check new JavaScript types like **bigint** and **symbol**.
 - Can type check internal JavaScript functions like **eval**, **JSON**, **NaN**, etc.
 - JavaScript **Errors** can return **proper type** and **name**.
+- In extended mode can seperate numbers into number types, integer, float, nan, infinity, bigint.
+- In extended mode can seperate strings into **'string'** for literal, and **'string Object'** for **new String('foo')**; 
 
 ## Tech
 - **Deno** - version 1.25.0
@@ -115,6 +117,8 @@ Below is the **return type** for the method.
 - **class names** --- ('function classname')
 - **internal javascript function names** --- ('function eval')
 - **error names** --- ('error RangeError', 'function RangeError')
+- **number names** --- ('number integer', 'number float', 'number nan', 'number infinity', 'number bigint')
+- **string literal vs string Object** --- ('string') for literal, ('string Object') for new String('foo')
 
 ## Examples
 Examples will be shown below, but can also be found as assertion tests in the [mod_test.ts](./tests/mod_test.ts) file.
@@ -163,6 +167,7 @@ Below is an extended response list for **type_of** (src, true)
 | Example | Response |
 | :------ | :------- |
 | **type_of** ( _"foo", true_ ) | "string" |
+| **type_of** ( _{}, true_ ) | "object Object" |
 | **type_of** ( _Date, true_ ) | "function Date" |
 | **type_of** ( _eval, true_ ) | "function eval" |
 | **type_of** ( _function foo(){}, true_ ) | "function foo" |
@@ -173,9 +178,32 @@ Below is an extended response list for **type_of** (src, true)
 | **type_of** ( _new Error(), true_ ) | "error Error" |
 | **type_of** ( _RangeError, true_ ) | "function RangeError" |
 | **type_of** ( _new RangeError(), true_ ) | "error RangeError" |
+| **type_of** ( _0, true_ ) | "number" |
+| **type_of** ( _12345, true_ ) | "number integer" |
+| **type_of** ( _-12345, true_ ) | "number integer" |
+| **type_of** ( _12345.67, true_ ) | "number float" |
+| **type_of** ( _-12345.67, true_ ) | "number float" |
+| **type_of** ( _12345.67, true_ ) | "number float" |
+| **type_of** ( _NaN, true_ ) | "number nan" |
+| **type_of** ( _Infinity, true_ ) | "number infinity" |
+| **type_of** ( _BigInt('9007199254740995'), true_ ) | "number bigint" |
+| **type_of** ( 1.0, true_ ) | "number integer" <-- Internal js error |
+| **type_of** ( new String('foo'), true_ ) | "string Object" |
 
+#### Unsolved Number Types
+There is an internal issue with _JavaScript_ where **floats** starting or ending with zero get truncated off. So _1.0_ reports as _1_ and _1.01_ reports as _1.01_. I would love to fix this issue, but it's internal _JavaScript_. Only way to keep this precision is by keeping everything string.
+
+```js
+type_of( 1.0, true ) === 'number integer'        // <--- This is an error, because it should be a float.
+
+// Should return this:
+type_of ( 1.0, true ) === 'number float'        
+```
 
 ## Versions
+- **v2.1.0** --- Added new features for number and string.
+1. Added in extended support for number. Now **type_of ()** can return (_'number integer'_, _'number float'_, _'number nan'_, _'number infinity'_, _'number bigint'_)
+2. Added in extended support for _string literal_ vs _string Object_. Now **type_of ()** can return (_'string'_, _'string Object'_)
 - **v2.0.0** --- Importable Method **type_of ()** or _alias_ **typeOf ()** with only one return type of (**string**) 
 - **v1.0.0** --- Global method **type_of ()** with extended return type of (**string | type_of_value**)
 

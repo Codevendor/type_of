@@ -37,20 +37,46 @@ export function type_of(src: unknown, extended: boolean = false): string {
             // Jump out of switch
             if (!extended) return ctype;
 
-            // Check if function
-            if (ctype === 'function') {
+            switch(ctype) {
 
-                return ((<Function>src).name! === '') ? 'function anonymous' : 'function ' + (<Function>src).name;
+                case 'string' :
 
-            }
+                    if(src instanceof String) return 'string Object';
+                    return 'string';
 
-            // Check for object or error
-            if (ctype === 'object' || ctype === 'error') {
+                case 'number' : 
+        
+                    /** Parse number type */
+                    if(Number.isSafeInteger(src)) return 'number integer';
 
-                return ctype + ' ' + (<object>src).constructor!.name!;
-            }
+                    /** Parse float */
+                    if(!!(src as number % 1)) return 'number float';
 
-            return ctype;
+                    /** Check nan */
+                    if(isNaN(src as number)) { return 'number nan'; } 
+                    else if (src === Infinity){ return 'number infinity'; }
+                    
+                    return ctype;
+
+                case 'bigint' : 
+
+                    return 'number bigint';
+
+                case 'function': 
+
+                    return ((<Function>src).name! === '') ? 'function anonymous' : 'function ' + (<Function>src).name;
+
+                case 'error':
+                case 'object':
+
+                    return ctype + ' ' + (<object>src).constructor!.name!;
+
+                default : 
+                
+                    return ctype;
+
+            }         
+
     }
 
 };
