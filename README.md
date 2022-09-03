@@ -204,6 +204,7 @@ type_of ( 1.0, true ) === 'number float'
 - **v2.1.0** --- Added new features for number and string.
 1. Added in extended support for number. Now **type_of ()** can return (_'number integer'_, _'number float'_, _'number nan'_, _'number infinity'_, _'number bigint'_)
 2. Added in extended support for _string literal_ vs _string Object_. Now **type_of ()** can return (_'string'_, _'string Object'_)
+3. Added in a .mjs module file written in javascript. 
 - **v2.0.0** --- Importable Method **type_of ()** or _alias_ **typeOf ()** with only one return type of (**string**) 
 - **v1.0.0** --- Global method **type_of ()** with extended return type of (**string | type_of_value**)
 
