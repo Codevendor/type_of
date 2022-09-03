@@ -187,8 +187,8 @@ Below is an extended response list for **type_of** (src, true)
 | **type_of** ( _NaN, true_ ) | "number nan" |
 | **type_of** ( _Infinity, true_ ) | "number infinity" |
 | **type_of** ( _BigInt('9007199254740995'), true_ ) | "number bigint" |
-| **type_of** ( 1.0, true_ ) | "number integer" <-- Internal js error |
-| **type_of** ( new String('foo'), true_ ) | "string Object" |
+| **type_of** ( _1.0, true_ ) | "number integer" <-- Internal js error |
+| **type_of** ( _new String('foo'), true_ ) | "string Object" |
 
 #### Unsolved Number Types
 There is an internal issue with _JavaScript_ where **floats** starting or ending with zero get truncated off. So _1.0_ reports as _1_ and _1.01_ reports as _1.01_. I would love to fix this issue, but it's internal _JavaScript_. Only way to keep this precision is by keeping everything string.
