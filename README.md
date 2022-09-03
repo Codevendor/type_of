@@ -62,12 +62,12 @@ Things you will need to get this module running. You will need to install **Deno
 ### Installing code from deno.land with import statement.
 ```js
     // Snake case version - type_of();
-   import { type_of } from "https://deno.land/x/type_of@v2.0.0/mod.ts";
+   import { type_of } from "https://deno.land/x/type_of@v2.1.0/mod.ts";
    
    // Or
    
    // Camel case alias - typeOf()
-   import { typeOf } from "https://deno.land/x/type_of@v2.0.0/mod.ts";
+   import { typeOf } from "https://deno.land/x/type_of@v2.1.0/mod.ts";
 ```
 
 
