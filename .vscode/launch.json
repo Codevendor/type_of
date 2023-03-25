@@ -9,7 +9,7 @@
             "name": "Launch Program",
             "type": "node",
             "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "deno",
+            "runtimeExecutable": "/home/administrator/.deno/bin/deno",
             "program": "${workspaceFolder}/tests/mod_test.ts",
             "runtimeArgs": [
                 "test", 
