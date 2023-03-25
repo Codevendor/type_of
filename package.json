@@ -1,0 +1,43 @@
+{
+    "name": "type_of",
+    "version": "3.0.0",
+    "description": "An importable TypeScript / JavaScript method to fix the JavaScript **typeof** operator. This code is written as a module for the **deno** runtime. If you are using JavaScript with node.js there is also an included [type_of.mjs](./src/type_of.mjs) file you can download. If you would like to visit the deno.land module page for **type_of()** [type_of deno module](https://deno.land/x/type_of).",
+    "main": "src/type_of.js",
+    "type": "module",
+    "homepage": "https://codevendor.com",
+    "directories": {
+      "test": "tests"
+    },
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+      "typeof",
+      "type_of",
+      "operator",
+      "type",
+      "check",
+      "types",
+      "typecheck",
+      "type check",
+      "typechecking",
+      "type checking",
+      "typeof operator",
+      "extended types",
+      "javascript types",
+      "typescript types"
+    ],
+    "author": {
+      "name": "Adam Smith",
+      "url": "https://codevendor.com/"
+    },
+    "contributors": [],
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Codevendor/type_of.git"
+    },
+    "bugs": {
+      "url": "https://github.com/Codevendor/type_of/issues"
+    }
+  }
