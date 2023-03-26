@@ -1,7 +1,10 @@
 'use strict';
 
 // Imports
-import { REG_PARSE_FUNCTION_CHAR, REG_SPLIT_ON_SPACE } from "./regex.ts";
+import { 
+    REG_PARSE_FUNCTION_CHAR, 
+    REG_SPLIT_ON_SPACE 
+} from "./regex.ts";
 
 /**
  * Parses the name of the type.
@@ -14,7 +17,10 @@ export function parseName(src: unknown): string {
     let name = '';
 
     // Get the method declaration
-    const methodDeclaration = (<Function>src).toString();
+    const methodDeclaration = src?.toString();
+
+    // Check for undefined
+    if(!methodDeclaration) return '';
 
     // Split the method declaration into two parts from ( or {
     const methodParts = methodDeclaration.split(REG_PARSE_FUNCTION_CHAR, 2);

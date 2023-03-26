@@ -1,8 +1,8 @@
 {
     "name": "type_of",
     "version": "3.0.0",
-    "description": "An importable TypeScript / JavaScript method to fix the JavaScript **typeof** operator. This code is written as a module for the **deno** runtime. If you are using JavaScript with node.js there is also an included [type_of.mjs](./src/type_of.mjs) file you can download. If you would like to visit the deno.land module page for **type_of()** [type_of deno module](https://deno.land/x/type_of).",
-    "main": "src/type_of.js",
+    "description": "An importable JavaScript / TypeScript method to fix the JavaScript 'typeof' operator. This module can be used with NodeJS or Deno runtime.",
+    "main": "src/javascript/core/type_of.js",
     "type": "module",
     "homepage": "https://codevendor.com",
     "directories": {

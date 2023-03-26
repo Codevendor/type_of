@@ -9,8 +9,8 @@ const TITLE = BG_BLUE + FG_WHITE;
 const RESET = "\x1b[0m";
 
 // The type_of method imported
-function type_of(src: unknown, extended: boolean = false): string {
-  return etype_of(src, extended);
+function type_of(src: unknown): string {
+  return etype_of(src);
 }
 
 // The test method
@@ -21,40 +21,63 @@ function test(id: number, cmd: string, expect: string) {
     console.log('Command: ' + cmd);
     console.log('Return: ' + eval(cmd));
   
-    assertEquals(eval(cmd), expect);
+    assertEquals(eval(cmd).toString(), expect);
   
   });
 
 }
 
 /** Start the tests ----------------------------------------------------------- */
+type_of('test');
+// test(1, `type_of( null )`, `null`);
+// test(2, `type_of( undefined )`, `undefined`);
+// test(3, `var x; type_of( x )`, `undefined`);
+// test(4, `type_of( void 0 )`, `undefined`);
+// test(5, `type_of( true )`, `boolean`);
+// test(6, `type_of( 12345 )`, `number`);
+// test(7, `type_of( BigInt('9007199254740995') )`, `bigint`);
+// test(8, `type_of( 'test' )`, `string`);
+// test(9, `type_of( Symbol() )`, `symbol`);
+// test(10, `var a = function(){}; type_of(a);`, `function`);
+// test(11, `type_of( {} )`, `object`);
 
-test(1, `type_of( null )`, `null`);
-test(2, `type_of( undefined )`, `undefined`);
-// await test(3, `var x; type_of( x )`, `undefined`);
-// await test(4, `type_of( void 0 )`, `undefined`);
-// await test(5, `type_of( true )`, `boolean`);
-// await test(6, `type_of( 12345 )`, `number`);
-// await test(7, `type_of( BigInt('9007199254740995') )`, `bigint`);
-// await test(8, `type_of( 'test' )`, `string`);
-// await test(9, `type_of( Symbol() )`, `symbol`);
-// await test(10, `var a = function(){}; type_of(a);`, `function`);
-// await test(11, `type_of( {} )`, `object`);
+// test(12, `type_of( NaN )`, `NaN`);
+// test(13, `type_of( -Infinity )`, `-Infinity`);
+// test(14, `type_of( +Infinity )`, `Infinity`);
+// test(15, `type_of( Infinity )`, `Infinity`);
+// test(16, `var a = function(){}; type_of(a)`, `AnonymousFunction`);
+// test(17, `var b = null; var a = function(id){ b = arguments; }; a(1); type_of(b)`, `Arguments`);
+// test(18, `type_of(globalThis)`, `globalThis`);
+// test(19, `type_of(window)`, `globalThis`);
+// test(19, `type_of(new String())`, `String`);
+//test(20, `type_of(/\s/)`, `RegExp`);
+//test(21, `type_of(Math)`, `Math`);
+//test(22, `type_of(Date)`, `Date`);
+// test(23, `type_of(Map)`, `Map`);
 
-// await test(12, `type_of( NaN, true )`, `NaN`);
-// await test(13, `type_of( -Infinity, true )`, `-Infinity`);
-// await test(14, `type_of( +Infinity, true )`, `Infinity`);
-// await test(15, `type_of( Infinity, true )`, `Infinity`);
-// await test(16, `var a = function(){}; type_of(a, true )`, `AnonymousFunction`);
-// await test(17, `var b = null; var a = function(id){ b = arguments; }; a(1); type_of(b, true)`, `Arguments`);
-// await test(18, `type_of(globalThis, true)`, `globalThis`);
-// await test(19, `type_of(window, true)`, `globalThis`);
-// await test(19, `type_of(new String(), true)`, `String`);
-// await test(20, `type_of(/\s/, true)`, `RegExp`);
-// await test(21, `type_of(Math, true)`, `Math`);
-// await test(22, `type_of(new Date(), true)`, `Date`);
-// await test(23, `type_of(Map, true)`, `Map`);
+// Functions
+//test(24, `type_of(eval)`, `eval`);
+//test(25, `type_of(isFinite)`, `isFinite`);
+//test(26, `type_of(isNaN)`, `isNaN`);
+//test(27, `type_of(parseFloat)`, `parseFloat`);
+//test(28, `type_of(parseInt)`, `parseInt`);
+//test(29, `type_of(decodeURI)`, `decodeURI`);
+//test(30, `type_of(decodeURIComponent)`, `decodeURIComponent`);
+//test(31, `type_of(encodeURI)`, `encodeURI`);
+//test(32, `type_of(encodeURIComponent)`, `encodeURIComponent`);
+//test(33, `type_of(escape)`, `escape`);
+//test(34, `type_of(unescape)`, `unescape`);
 
+// Errors
+//test(35, `type_of(Error)`, `Error`);
+//test(36, `type_of(new Error())`, `Error`);
+//test(37, `type_of(AggregateError)`, `AggregateError`);
+test(38, `type_of(EvalError)`, `EvalError`);
+test(39, `type_of(new EvalError())`, `EvalError`);
+
+
+// Objects
+//test(22, `type_of(new Date())`, `Date`);
 
 
 //test(13, `type_of( [], true )`, `Array`);
