@@ -2,6 +2,7 @@
 
 // Imports
 import {
+    getKeyByValue,
     parseName,
     TYPES 
 } from "./helpers.ts";
@@ -16,30 +17,20 @@ export function parseFunction(src: unknown, srcType: string): string {
   // Parse the function name
   const fname = parseName(src);
 
-  // Switch the function name
-  switch (fname) {
-    // Anonymous Type
-    case "function":
-    case "":
-      return TYPES.ANONYMOUS;
+  // Get the key by value if exists
+  const key: string | undefined = getKeyByValue(TYPES, fname);
 
-    // Eval Type
-    case TYPES.EVAL:
-      return TYPES.EVAL;
+  // Return types key
+  if(key && TYPES.hasOwnProperty(key)) {
+    return TYPES[key as keyof typeof TYPES];
+  } 
 
-
-
-      
-    // Date Type
-    case TYPES.DATE:
-      return TYPES.DATE;
-
-    // Error Type
-    case TYPES.ERROR:
-      return TYPES.ERROR;
-
-    // Name Type
-    default:
-      return fname;
+  // Check for anon functions
+  if(["function", ""].includes(fname)) {
+    return TYPES.ANONYMOUS;
   }
+
+  // Return plain function
+  return TYPES.FUNCTION;
+
 }

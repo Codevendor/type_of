@@ -1,11 +1,11 @@
 "use strict";
 
 // Imports
-import { 
+import {
   getKeyByValue,
   parseName,
-  REG_PARSE_OBJECT_STRING, 
-  TYPES 
+  REG_PARSE_OBJECT_STRING,
+  TYPES,
 } from "./helpers.ts";
 
 /**
@@ -29,29 +29,19 @@ export function parseObject(src: unknown, srcType: string): string {
   }
 
   // Get the key by value if exists
-  const key: string|undefined = getKeyByValue(TYPES, subType);
+  const key: string | undefined = getKeyByValue(TYPES, subType);
 
-  // Check key exists
-  if(!key) {
-
-    // Check if constructor name
-    if (src.constructor && src.constructor.name) {
-    
-      // Check if object no name
-      if (src.constructor.name.toLowerCase() === TYPES.OBJECT) {
-        return TYPES.OBJECT;
-      }
-
-      // Return constructor name
-      return src.constructor.name;
-    }
-
-    // Return plain object
-    return TYPES.OBJECT;
-
+  // Check if constructor name
+  if (src.constructor && src.constructor.name && src.constructor.name.toLowerCase()!==TYPES.OBJECT.toLowerCase()) {
+    // Return constructor name
+    return src.constructor.name;
   }
 
   // Return types key
-  return TYPES[key as keyof typeof TYPES];
-  
+  if(key && TYPES.hasOwnProperty(key)) {
+    return TYPES[key as keyof typeof TYPES];
+  } 
+
+  // Return plain object
+  return TYPES.OBJECT;
 }

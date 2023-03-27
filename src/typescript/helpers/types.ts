@@ -61,12 +61,12 @@ export const TYPES = {
     SYNTAX_ERROR: 'SyntaxError',
     TYPE_ERROR: 'TypeError',
     URI_ERROR: 'URIError',
-    INTERAL_ERROR: 'InternalError',
 
     // Indexed Collections
     ARRAY: 'Array',
     INT8ARRAY: 'Int8Array',
     UINT8ARRAY: 'Uint8Array',
+    UINT8CLAMPEDARRAY: 'Uint8ClampedArray',
     INT16ARRAY: 'Int16Array',
     UINT16ARRAY: 'Uint16Array',
     INT32ARRAY: 'Int32Array',

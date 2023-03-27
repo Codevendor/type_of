@@ -49,10 +49,8 @@ type_of('test');
 // test(17, `var b = null; var a = function(id){ b = arguments; }; a(1); type_of(b)`, `Arguments`);
 // test(18, `type_of(globalThis)`, `globalThis`);
 // test(19, `type_of(window)`, `globalThis`);
-// test(19, `type_of(new String())`, `String`);
-//test(20, `type_of(/\s/)`, `RegExp`);
-//test(21, `type_of(Math)`, `Math`);
-//test(22, `type_of(Date)`, `Date`);
+
+
 // test(23, `type_of(Map)`, `Map`);
 
 // Functions
@@ -69,18 +67,95 @@ type_of('test');
 //test(34, `type_of(unescape)`, `unescape`);
 
 // Errors
-//test(35, `type_of(Error)`, `Error`);
-//test(36, `type_of(new Error())`, `Error`);
-//test(37, `type_of(AggregateError)`, `AggregateError`);
-test(38, `type_of(EvalError)`, `EvalError`);
-test(39, `type_of(new EvalError())`, `EvalError`);
+// test(35, `type_of(Error)`, `Error`);
+// test(36, `type_of(new Error())`, `Error`);
+// test(37, `type_of(AggregateError)`, `AggregateError`);
+// test(38, `type_of(new AggregateError("test"))`, `AggregateError`);
+// test(39, `type_of(EvalError)`, `EvalError`);
+// test(40, `type_of(new EvalError("test"))`, `EvalError`);
+// test(41, `type_of(RangeError)`, `RangeError`);
+// test(42, `type_of(new RangeError("test"))`, `RangeError`);
+// test(43, `type_of(ReferenceError)`, `ReferenceError`);
+// test(44, `type_of(new ReferenceError("test"))`, `ReferenceError`);
+// test(45, `type_of(SyntaxError)`, `SyntaxError`);
+// test(46, `type_of(new SyntaxError("test"))`, `SyntaxError`);
+// test(47, `type_of(TypeError)`, `TypeError`);
+// test(48, `type_of(new TypeError("test"))`, `TypeError`);
+// test(49, `type_of(URIError)`, `URIError`);
+// test(50, `type_of(new URIError("test"))`, `URIError`);
 
+// Numbers and Dates
+// test(51, `type_of(Math)`, `Math`);
+// test(52, `type_of(Date)`, `Date`);
+
+// Text Processing
+// test(53, `type_of(new String())`, `String`);
+// test(54, `type_of(/\s/)`, `RegExp`);
+
+// Indexed Collections
+// test(55, `type_of( [] )`, `Array`);
+// test(56, `type_of( new Array() )`, `Array`);
+// test(57, `type_of( Int8Array )`, `Int8Array`);
+// test(58, `type_of( new Int8Array() )`, `Int8Array`);
+// test(59, `type_of( Uint8Array )`, `Uint8Array`);
+// test(60, `type_of( new Uint8Array() )`, `Uint8Array`);
+// test(61, `type_of( Uint8ClampedArray )`, `Uint8ClampedArray`);
+// test(62, `type_of( new Uint8ClampedArray() )`, `Uint8ClampedArray`);
+// test(63, `type_of( Int16Array )`, `Int16Array`);
+// test(64, `type_of( new Int16Array() )`, `Int16Array`);
+// test(65, `type_of( Uint16Array )`, `Uint16Array`);
+// test(66, `type_of( new Uint16Array() )`, `Uint16Array`);
+// test(67, `type_of( Int32Array )`, `Int32Array`);
+// test(68, `type_of( new Int32Array() )`, `Int32Array`);
+// test(69, `type_of( Uint32Array )`, `Uint32Array`);
+// test(70, `type_of( new Uint32Array() )`, `Uint32Array`);
+// test(71, `type_of( BigInt64Array )`, `BigInt64Array`);
+// test(72, `type_of( new BigInt64Array() )`, `BigInt64Array`);
+// test(73, `type_of( BigUint64Array )`, `BigUint64Array`);
+// test(74, `type_of( new BigUint64Array() )`, `BigUint64Array`);
+// test(75, `type_of( Float32Array )`, `Float32Array`);
+// test(76, `type_of( new Float32Array() )`, `Float32Array`);
+// test(77, `type_of( Float64Array )`, `Float64Array`);
+// test(78, `type_of( new Float64Array() )`, `Float64Array`);
+
+// Keyed Collections
+// test(79, `type_of( Map )`, `Map`);
+// test(80, `type_of( new Map() )`, `Map`);
+// test(81, `type_of( Set )`, `Set`);
+// test(82, `type_of( new Set() )`, `Set`);
+// test(83, `type_of( WeakMap )`, `WeakMap`);
+// test(84, `type_of( new WeakMap() )`, `WeakMap`);
+// test(85, `type_of( WeakSet )`, `WeakSet`);
+// test(86, `type_of( new WeakSet() )`, `WeakSet`);
+
+// Structured Data
+// test(87, `type_of( ArrayBuffer )`, `ArrayBuffer`);
+// test(88, `type_of( new ArrayBuffer() )`, `ArrayBuffer`);
+// test(89, `type_of( SharedArrayBuffer )`, `SharedArrayBuffer`);
+// test(90, `type_of( new SharedArrayBuffer() )`, `SharedArrayBuffer`);
+// test(91, `type_of( DataView )`, `DataView`);
+// test(92, `type_of( new DataView(new ArrayBuffer()) )`, `DataView`);
+// test(93, `type_of( Atomics )`, `Atomics`);
+// test(94, `type_of( JSON )`, `JSON`);
+
+// Managing memory
+//  test(95, `type_of( WeakRef )`, `WeakRef`);
+//  test(96, `type_of( FinalizationRegistry )`, `FinalizationRegistry`);
+
+// Control abstraction objects
+//  test(97, `type_of( Promise )`, `Promise`);
+//  test(98, `type_of( new Promise(()=>{}) )`, `Promise`);
+
+ // Reflection
+ test(99, `type_of( Reflect )`, `Reflect`);
+ test(100, `type_of( Proxy )`, `Proxy`);
+ test(101, `type_of( new Proxy({msg1: "hey1", msg2: "hey2"}, {}) )`, `Proxy`);
 
 // Objects
 //test(22, `type_of(new Date())`, `Date`);
 
 
-//test(13, `type_of( [], true )`, `Array`);
+
 
 
 
